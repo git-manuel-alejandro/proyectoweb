@@ -5,7 +5,29 @@
 {% block content %}
 
    <h1 class="text-white text-center">Formulario de Contacto</h1>
-   <p class="text-white text-center">{{ formulario }}</p>
+
+   <div class="contenedorFormulario">
+
+      {% if "valido" in request.GET %}
+      <p>Información enviada correctamente</p>
+
+      {% endif %}
+      <form action="" method="post" style="text-align: center;" >
+         {% csrf_token %}
+         <table class="text-white" style="margin: 20px auto;">
+            {{ formulario.as_table }}
+         </table>
+         <input type="submit" value="Enviar" style="width: 150px;">
+      </form>
+
+   </div>
+
+   <!-- <p class="text-white">{{request.POST.nombre}}</p> -->
+
+   <p>{{ formulario }}</p>
+
+
+
    
    <!-- NO OLVIDAR NUNCA, REGISTAR LA APP EN EL ARCHIVO SETTINGS -->
 
